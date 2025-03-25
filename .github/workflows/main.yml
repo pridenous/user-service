@@ -29,7 +29,6 @@ jobs:
 
       - name: Build Docker image for User Service
         run: |
-          cd user-service
           docker build -t user-service .
 
       - name: Push Docker image to Docker Hub
