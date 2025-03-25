@@ -1,0 +1,55 @@
+# .NET Core build output
+/bin/
+/obj/
+
+# User-specific files
+.idea/
+/.vs/
+/.vscode/
+
+# ASP.NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# GitHub Actions
+.github/workflows/
+
+# Windows-specific files
+Thumbs.db
+Desktop.ini
+
+# macOS-specific files
+.DS_Store
+
+# Linux-specific files
+*~
+
+# ASP.NET Core secrets
+appsettings.Development.json
+appsettings.Production.json
+secrets/
+
+# Logs
+logs/
+log/
+
+# .NET Core temporary files
+# Uncomment if you are using Rider IDE (JetBrains)
+.idea/.idea/
+
+# User-specific files
+.vscode/
+
+# Build directory for Visual Studio for Mac
+.vscode/
+
+# Local development tools configuration files
+.vscode/
+
+# Ignore any other configurations related to local development
+localconfig.json
