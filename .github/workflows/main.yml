@@ -40,5 +40,5 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker tag user-service mydockerhubuser/user-service:latest
-          docker push mydockerhubuser/user-service:latest
+          docker tag user-service pridenous/user-service:latest
+          docker push pridenous/user-service
