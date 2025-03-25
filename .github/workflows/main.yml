@@ -42,3 +42,21 @@ jobs:
         run: |
           docker tag user-service pridenous/user-service:latest
           docker push pridenous/user-service
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}  # Tambahkan port SSH di sini
+          script: |
+            echo "Pulling latest Docker image..."
+            docker pull pridenous/user-service:latest
+
+            echo "Stopping old container..."
+            docker stop user-service || true
+            docker rm user-service || true
+
+            echo "Running new container..."
+            docker run -d --name user-service -p 80:80 pridenous/user-service:latest
