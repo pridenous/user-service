@@ -57,10 +57,13 @@ jobs:
 
       - name: Pull dan Restart Container di VPS
         run: |
-           ssh -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
-            docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
-            docker pull username/repository:latest
-            docker stop app_container || true
-            docker rm app_container || true
-            docker run -d --name app_container -p 80:80 username/repository:latest
-            EOF
+      - name: Pull dan Restart Container di VPS
+        run: |
+          ssh -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+          docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
+          docker pull pridenous/user-service:latest
+          docker stop app_container || true
+          docker rm app_container || true
+          docker run -d --name app_container -p 80:80 pridenous/user-service:latest
+EOF
+
