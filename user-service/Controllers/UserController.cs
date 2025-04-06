@@ -1,20 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using user_service.Services;
 
 namespace user_service.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController(IUserServices userServices) : ControllerBase
     {
         [HttpGet]
-        public IActionResult GetUsers()
+        public async Task<IActionResult> GetUsers()
         {
-            var users = new List<object>
-            {
-                new { Id = 1, Name = "John Doe" },
-                new { Id = 2, Name = "Jane Doe" }
-            };
+            var users = await userServices.GetUser();
 
             return Ok(users);
         }
